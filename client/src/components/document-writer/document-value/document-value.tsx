@@ -3,7 +3,8 @@ import * as React from 'react';
 import { IDocumentValueModel } from '../../../models/document-value-model';
 import styles from './document-value.module.css';
 import { observer } from 'mobx-react';
-import { useInputField } from './use-input-field';
+import { useInputField } from '../../../hooks/use-input-field';
+import { selectTextOnFocus } from '../../../utils/event-handler-utils';
 
 interface IDocumentValueProps {
   docValue: IDocumentValueModel;
@@ -17,10 +18,6 @@ const DocumentValue_ = (props: IDocumentValueProps): React.JSX.Element => {
   const [value, onValueChangeHandler] = useInputField(props.docValue.value);
   const inputKeyRef = React.useRef<HTMLInputElement>(null);
   const inputValueRef = React.useRef<HTMLInputElement>(null);
-
-  const onFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.target.select();
-  };
 
   const commitChanges = () => {
     props.docValue.setKey(key);
@@ -50,7 +47,7 @@ const DocumentValue_ = (props: IDocumentValueProps): React.JSX.Element => {
         inputRef={inputKeyRef}
         className={styles.textInput}
         value={key}
-        onFocus={onFocus}
+        onFocus={selectTextOnFocus}
         onChange={onKeyChangeHandler}
         onBlur={commitChanges}
         onKeyUp={onKeyUp}
@@ -60,7 +57,7 @@ const DocumentValue_ = (props: IDocumentValueProps): React.JSX.Element => {
         inputRef={inputValueRef}
         className={styles.textInput}
         value={value}
-        onFocus={onFocus}
+        onFocus={selectTextOnFocus}
         onChange={onValueChangeHandler}
         onBlur={commitChanges}
         onKeyUp={onKeyUp}

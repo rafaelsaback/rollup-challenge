@@ -1,4 +1,4 @@
-import { Button, TextArea } from '@blueprintjs/core';
+import { Button, InputGroup, TextArea } from '@blueprintjs/core';
 import * as React from 'react';
 import { IDocumentValueModel } from '../../../models/document-value-model';
 import styles from './document-value.module.css';
@@ -12,31 +12,39 @@ interface IDocumentValueProps {
 }
 
 const DocumentValue_ = (props: IDocumentValueProps): React.JSX.Element => {
+  const [key, setKey] = React.useState(props.docValue.key);
   const [value, setValue] = React.useState(props.docValue.value);
-  const textAreaRef = React.useRef<TextArea>(null);
+  const inputKeyRef = React.useRef<HTMLInputElement>(null);
+  const inputValueRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     setValue(props.docValue.value);
   }, [props.docValue.value]);
 
-  const onFocus = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+  const onFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     e.target.select();
   };
 
-  const onBlur = () => {
+  const commitChanges = () => {
+    props.docValue.setKey(key);
     props.docValue.setValue(value);
   };
 
-  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const onKeyChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKey(e.target.value.replace('\n', ''));
+  };
+
+  const onValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value.replace('\n', ''));
   };
 
-  const onKeyUp = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch (e.key) {
       case 'Enter':
         e.preventDefault();
-        props.docValue.setValue(value);
-        textAreaRef.current?.textareaElement?.blur();
+        commitChanges();
+        inputValueRef.current?.blur();
+        (e.target as HTMLInputElement).blur();
         break;
       case 'ArrowUp':
         props.onMoveUp();
@@ -49,13 +57,24 @@ const DocumentValue_ = (props: IDocumentValueProps): React.JSX.Element => {
 
   return (
     <div className={styles.documentValue}>
-      <TextArea
-        ref={textAreaRef}
-        className={styles.textArea}
+      <label>Key:</label>
+      <InputGroup
+        inputRef={inputKeyRef}
+        className={styles.textInput}
+        value={key}
+        onFocus={onFocus}
+        onChange={onKeyChange}
+        onBlur={commitChanges}
+        onKeyUp={onKeyUp}
+      />
+      <label>Value:</label>
+      <InputGroup
+        inputRef={inputValueRef}
+        className={styles.textInput}
         value={value}
         onFocus={onFocus}
-        onChange={onChange}
-        onBlur={onBlur}
+        onChange={onValueChange}
+        onBlur={commitChanges}
         onKeyUp={onKeyUp}
       />
       <Button className={styles.deleteBtn} icon="trash" onClick={props.onDelete} />

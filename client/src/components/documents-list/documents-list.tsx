@@ -14,8 +14,6 @@ interface IDocumentsListProps {
 }
 
 const DocumentsList_ = (props: IDocumentsListProps): React.JSX.Element => {
-  const addNewDoc = () => props.addNewDoc();
-
   return (
     <div className={styles.documentsList}>
       <h3>Documents</h3>
@@ -30,7 +28,7 @@ const DocumentsList_ = (props: IDocumentsListProps): React.JSX.Element => {
       <Button
         icon="add"
         className={cn({ [styles.button]: props.documents.length })}
-        onClick={addNewDoc}
+        onClick={() => props.addNewDoc()}
       />
     </div>
   );

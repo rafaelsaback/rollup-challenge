@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const DocumentsStore = types
   .model({
-    workspaceId: types.optional(types.identifier, () => uuidv4()),
+    workspaceId: types.identifier,
     documents: types.optional(types.array(DocumentModel), []),
-    selectedDocumentId: types.optional(types.string, '')
+    selectedDocumentId: ''
   })
   .views((self) => ({
     getDocument(id: string) {
@@ -19,11 +19,6 @@ export const DocumentsStore = types
     }
   }))
   .actions((self) => ({
-    addDocument() {
-      const newDoc = DocumentModel.create();
-      self.documents.push(newDoc);
-      return newDoc;
-    },
     selectDocument(docId: string) {
       const isValidDocId = !!self.getDocument(docId);
       if (isValidDocId) {
@@ -32,6 +27,13 @@ export const DocumentsStore = types
       } else {
         self.selectedDocumentId = '';
       }
+    }
+  }))
+  .actions((self) => ({
+    addDocument() {
+      const newDoc = DocumentModel.create();
+      self.documents.push(newDoc);
+      self.selectDocument(newDoc.id);
     }
   }))
   .actions((self) => ({

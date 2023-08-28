@@ -5,25 +5,23 @@ import { IJsonPatch, onPatch, applyPatch } from 'mobx-state-tree';
 import { IDocumentModel } from '../models/document-model';
 import { isSelectedDocumentPatch } from '../utils/patch-utils';
 
-export class DocumentManagerModel {
-  private readonly _workspaceId: string;
+export class DocumentManagerService {
   private readonly _documentStore: IDocumentStore;
   private _inPatching = false;
 
   constructor(workspaceId: string = 'default') {
-    this._workspaceId = workspaceId;
-    this._documentStore = DocumentsStore.create();
+    this._documentStore = DocumentsStore.create({ workspaceId });
     onPatch(this._documentStore, this.onPatch);
   }
 
   public init() {
     WebsocketService.init();
-    this.subToWorkspace(this._workspaceId);
+    this.subToWorkspace(this.workspaceId);
     this.subToPatches();
   }
 
   public dispose() {
-    this.unsubFromWorkspace(this._workspaceId);
+    this.unsubFromWorkspace(this.workspaceId);
     this.unsubToPatches();
   }
 
@@ -67,7 +65,7 @@ export class DocumentManagerModel {
 
   private onPatch = (patches: IJsonPatch) => {
     if (!this._inPatching && !isSelectedDocumentPatch(patches)) {
-      this.submitPatch(this._workspaceId, '', patches);
+      this.submitPatch(this.workspaceId, '', patches);
     }
   };
 
@@ -78,10 +76,12 @@ export class DocumentManagerModel {
     this._inPatching = false;
   };
 
+  private get workspaceId(): string {
+    return this._documentStore.workspaceId;
+  }
+
   public addNewDoc = () => {
-    const newDoc = this._documentStore.addDocument();
-    this._documentStore.selectDocument(newDoc.id);
-    return newDoc;
+    this._documentStore.addDocument();
   };
 
   public addNewDocValue = () => {

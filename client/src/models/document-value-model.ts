@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const DocumentValueModel = types
   .model('DocumentValue', {
     id: types.optional(types.identifier, () => uuidv4()),
-    value: types.optional(types.string, '')
+    value: ''
   })
   .actions((self) => ({
     setValue(value: string) {

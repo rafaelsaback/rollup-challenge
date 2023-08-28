@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { DocumentsList } from './components/documents-list';
 import { DocumentWriter } from './components/document-writer';
-import { DocumentManagerModel } from './services/document-manager-model';
+import { DocumentManagerService } from './services/document-manager-service';
 import { observer } from 'mobx-react';
 
 const WORKSPACE_ID_QUERY_PARAM = 'workspaceId';
@@ -14,8 +14,8 @@ const getWorkspaceId = () => {
 
 function App() {
   const [workspaceId] = React.useState(getWorkspaceId);
-  const [docManager] = React.useState<DocumentManagerModel>(
-    () => new DocumentManagerModel(workspaceId)
+  const [docManager] = React.useState<DocumentManagerService>(
+    () => new DocumentManagerService(workspaceId)
   );
 
   React.useEffect(() => {

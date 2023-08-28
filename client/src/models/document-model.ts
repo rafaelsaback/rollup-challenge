@@ -6,7 +6,7 @@ export const DocumentModel = types
   .model('Document', {
     id: types.optional(types.identifier, () => uuidv4()),
     documentValues: types.optional(types.array(DocumentValueModel), []),
-    name: types.optional(types.string, 'Untitled')
+    name: 'Untitled'
   })
   .views((self) => ({
     getDocumentValue(fragmentId: string) {
@@ -18,7 +18,6 @@ export const DocumentModel = types
       self.name = value;
     },
     addNewDocumentValue(value = '') {
-      console.log('adding new doc value');
       const docValue = DocumentValueModel.create();
       docValue.setValue(value);
       self.documentValues.push(docValue);

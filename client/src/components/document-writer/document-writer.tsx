@@ -1,10 +1,11 @@
 import * as React from 'react';
 import styles from './document-writer.module.css';
 import { IDocumentModel } from '../../models/document-model';
-import { Button, NonIdealState } from '@blueprintjs/core';
 import { DocumentValue } from './document-value';
 import { observer } from 'mobx-react';
 import { DocumentName } from './document-name';
+import { NonIdealState } from '@blueprintjs/core/lib/esm/components/non-ideal-state/nonIdealState';
+import { Button } from '@blueprintjs/core/lib/esm/components/button/buttons';
 
 interface IDocumentWriterProps {
   document?: IDocumentModel;
@@ -41,7 +42,6 @@ const DocumentWriter_ = (props: IDocumentWriterProps): React.JSX.Element => {
         <Button className={styles.button} icon="add" onClick={addDocumentValue} />
       </>
     );
-    // return doc.documentValues.map((docValue) => <div key={docValue.id}>{docValue.id}</div>);
   };
 
   return (

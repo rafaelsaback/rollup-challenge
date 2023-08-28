@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 import { IDocumentModel } from '../../../models/document-model';
-import { InputGroup } from '@blueprintjs/core';
 import styles from './document-name.module.css';
 import { useInputField } from '../../../hooks/use-input-field';
 import { selectTextOnFocus } from '../../../utils/event-handler-utils';
+import { InputGroup } from '@blueprintjs/core/lib/esm/components/forms/inputGroup';
 
 interface IDocumentNameProps {
   document: IDocumentModel;

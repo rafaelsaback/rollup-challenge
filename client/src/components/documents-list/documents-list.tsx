@@ -4,7 +4,7 @@ import styles from './documents-list.module.css';
 import { IDocumentModel } from '../../models/document-model';
 import { observer } from 'mobx-react';
 import { DocumentItem } from './document-item';
-import { Button } from '@blueprintjs/core';
+import { Button } from '@blueprintjs/core/lib/esm/components/button/buttons';
 
 interface IDocumentsListProps {
   documents: IDocumentModel[];

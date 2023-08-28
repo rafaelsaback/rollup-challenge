@@ -1,10 +1,11 @@
-import { Button, InputGroup } from '@blueprintjs/core';
 import * as React from 'react';
 import { IDocumentValueModel } from '../../../models/document-value-model';
 import styles from './document-value.module.css';
 import { observer } from 'mobx-react';
 import { useInputField } from '../../../hooks/use-input-field';
 import { selectTextOnFocus } from '../../../utils/event-handler-utils';
+import { InputGroup } from '@blueprintjs/core/lib/esm/components/forms/inputGroup';
+import { Button } from '@blueprintjs/core/lib/esm/components/button/buttons';
 
 interface IDocumentValueProps {
   docValue: IDocumentValueModel;

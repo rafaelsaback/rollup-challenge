@@ -1,0 +1,17 @@
+.documentItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  visibility: hidden;
+}
+
+.documentItem:hover .deleteBtn {
+  visibility: initial;
+}

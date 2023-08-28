@@ -1,0 +1,19 @@
+.documentValue {
+  display: flex;
+  flex-direction: row;
+  margin-top: 12px;
+}
+
+.textArea {
+  display: flex;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.deleteBtn {
+  visibility: hidden;
+}
+
+.documentValue:hover .deleteBtn {
+  visibility: initial;
+}

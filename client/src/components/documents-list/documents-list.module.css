@@ -1,0 +1,13 @@
+.documentsList {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: #ededed;
+  border-right: 1px solid rgb(95, 95, 95);
+  padding: 6px;
+  gap: 12px;
+}
+
+.button {
+  margin-top: 18px;
+}

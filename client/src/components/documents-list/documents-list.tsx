@@ -29,7 +29,9 @@ const DocumentsList_ = (props: IDocumentsListProps): React.JSX.Element => {
         icon="add"
         className={cn({ [styles.button]: props.documents.length })}
         onClick={() => props.addNewDoc()}
-      />
+      >
+        Document
+      </Button>
     </div>
   );
 };

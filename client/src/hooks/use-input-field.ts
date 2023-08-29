@@ -10,7 +10,7 @@ export const useInputField = (
   }, [initialValue]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value.replace('\n', ''));
+    setValue(e.target.value);
   };
 
   return [value, onChange];

@@ -39,7 +39,9 @@ const DocumentWriter_ = (props: IDocumentWriterProps): React.JSX.Element => {
             onMoveDown={() => doc.moveDocumentValueDown(docValue.id)}
           />
         ))}
-        <Button className={styles.button} icon="add" onClick={addDocumentValue} />
+        <Button className={styles.button} icon="add" onClick={addDocumentValue}>
+          Key/Value Pair
+        </Button>
       </>
     );
   };

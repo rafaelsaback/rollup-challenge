@@ -6,7 +6,7 @@ split between documents across a workspace.
 Websocket communication is leveraged to keep all clients informed about the latest
 changes in a given workspace. However, no persistence mechanism is present at the
 moment, meaning that clients that open the workspace will only see the changes
-made after they open the given workspace.
+made after they've opened the given workspace.
 
 ![alt text](https://github.com/rafaelsaback/rollup-challenge/blob/master/app.png?raw=true)
 

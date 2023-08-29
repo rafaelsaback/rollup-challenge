@@ -8,6 +8,8 @@ changes in a given workspace. However, no persistence mechanism is present at th
 moment, meaning that clients that open the workspace will only see the changes
 made after they open the given workspace.
 
+![alt text](https://github.com/rafaelsaback/rollup-challenge/blob/master/app.png?raw=true)
+
 ## Running the code
 
 1. Go to the `server` folder, run `npm install` and then `npm run start-server`
@@ -27,4 +29,3 @@ Feel free to change the query param `workspaceId`.
    5. Move a key/value pair up/down using the arrow keys
    6. Delete a key/value pair
    7. Delete the document
-

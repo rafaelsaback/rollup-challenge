@@ -70,10 +70,14 @@ export class DocumentManagerService {
   };
 
   private applyPatch = ({ workspaceId, documentId, patches }: any) => {
-    console.log(workspaceId, documentId, patches);
-    this._inPatching = true;
-    applyPatch(this._documentStore, patches);
-    this._inPatching = false;
+    try {
+      console.log(workspaceId, documentId, patches);
+      this._inPatching = true;
+      applyPatch(this._documentStore, patches);
+      this._inPatching = false;
+    } catch (e) {
+      console.log('Failed to apply the patch. Error:', e);
+    }
   };
 
   private get workspaceId(): string {

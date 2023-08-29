@@ -28,7 +28,6 @@ const DocumentValue_ = (props: IDocumentValueProps): React.JSX.Element => {
   const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     switch (e.key) {
       case 'Enter':
-        e.preventDefault();
         commitChanges();
         (e.target as HTMLInputElement).blur();
         break;

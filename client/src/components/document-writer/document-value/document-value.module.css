@@ -12,6 +12,7 @@
   display: flex;
   flex: 1;
   margin: 0 12px 0 6px;
+  text-overflow: ellipsis;
 }
 
 .deleteBtn {

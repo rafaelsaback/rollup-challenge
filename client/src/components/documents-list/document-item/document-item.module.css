@@ -8,6 +8,12 @@
   cursor: pointer;
 }
 
+.documentItemName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .deleteBtn {
   visibility: hidden;
 }

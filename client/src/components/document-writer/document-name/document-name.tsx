@@ -20,7 +20,6 @@ const DocumentName_ = (props: IDocumentNameProps): React.JSX.Element => {
 
   const onKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault();
       props.document.setName(docName);
       (e.target as HTMLInputElement).blur();
     }

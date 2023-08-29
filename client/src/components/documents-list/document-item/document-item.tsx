@@ -18,7 +18,7 @@ const DocumentItem_ = (props: IDocumentItemProps): React.JSX.Element => {
 
   return (
     <div className={styles.documentItem} onClick={props.onClick}>
-      {props.document.name}
+      <div className={styles.documentItemName}> {props.document.name}</div>
       <Button className={styles.deleteBtn} icon="trash" onClick={onDelete} />
     </div>
   );

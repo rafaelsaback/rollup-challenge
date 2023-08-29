@@ -1,6 +1,5 @@
 import { Instance, types } from 'mobx-state-tree';
 import { DocumentModel } from '../models/document-model';
-import { v4 as uuidv4 } from 'uuid';
 
 export const DocumentsStore = types
   .model({

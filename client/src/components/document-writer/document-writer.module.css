@@ -10,7 +10,7 @@
 .documentWriterPaper {
   display: flex;
   flex-direction: column;
-  margin: 12px 0;
+  margin: 34px 0;
   padding: 48px;
   border: 1px solid rgb(208, 208, 208);
   background-color: white;

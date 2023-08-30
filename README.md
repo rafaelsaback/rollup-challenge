@@ -8,7 +8,7 @@ changes in a given workspace. However, no persistence mechanism is present at th
 moment, meaning that clients that open the workspace will only see the changes
 made after they've opened the given workspace.
 
-![alt text](https://github.com/rafaelsaback/rollup-challenge/blob/master/app.png?raw=true)
+![alt text](https://github.com/rafaelsaback/rollup-challenge/blob/master/app-screenshot.png?raw=true)
 
 ## Running the code
 

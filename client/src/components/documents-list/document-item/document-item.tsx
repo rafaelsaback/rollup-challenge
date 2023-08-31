@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IDocumentModel } from '../../../models/document-model';
 import { observer } from 'mobx-react';
 import styles from './document-item.module.css';
-import { Button } from '@blueprintjs/core/lib/esm/components/button/buttons';
+import { Button } from '../../common/button';
 
 interface IDocumentItemProps {
   document: IDocumentModel;

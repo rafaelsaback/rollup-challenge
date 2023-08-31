@@ -4,8 +4,8 @@ import styles from './document-value.module.css';
 import { observer } from 'mobx-react';
 import { useInputField } from '../../../hooks/use-input-field';
 import { selectTextOnFocus } from '../../../utils/event-handler-utils';
-import { InputGroup } from '@blueprintjs/core/lib/esm/components/forms/inputGroup';
-import { Button } from '@blueprintjs/core/lib/esm/components/button/buttons';
+import { TextInput } from '../../common/text-input';
+import { Button } from '../../common/button';
 
 interface IDocumentValueProps {
   docValue: IDocumentValueModel;
@@ -43,7 +43,7 @@ const DocumentValue_ = (props: IDocumentValueProps): React.JSX.Element => {
   return (
     <form className={styles.documentValue}>
       <label>Key:</label>
-      <InputGroup
+      <TextInput
         inputRef={inputKeyRef}
         className={styles.textInput}
         value={key}
@@ -53,7 +53,7 @@ const DocumentValue_ = (props: IDocumentValueProps): React.JSX.Element => {
         onKeyUp={onKeyUp}
       />
       <label>Value:</label>
-      <InputGroup
+      <TextInput
         inputRef={inputValueRef}
         className={styles.textInput}
         value={value}

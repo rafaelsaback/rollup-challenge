@@ -4,8 +4,8 @@ import { IDocumentModel } from '../../models/document-model';
 import { DocumentValue } from './document-value';
 import { observer } from 'mobx-react';
 import { DocumentName } from './document-name';
-import { NonIdealState } from '@blueprintjs/core/lib/esm/components/non-ideal-state/nonIdealState';
-import { Button } from '@blueprintjs/core/lib/esm/components/button/buttons';
+import { Button } from '../common/button';
+import { NonIdealState } from '../common/non-ideal-state';
 
 interface IDocumentWriterProps {
   document?: IDocumentModel;
